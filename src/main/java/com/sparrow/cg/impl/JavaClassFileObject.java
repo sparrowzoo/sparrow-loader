@@ -37,7 +37,7 @@ public class JavaClassFileObject extends SimpleJavaFileObject {
                 + kind.extension), kind);
     }
 
-    byte[] getBytes() {
+    public byte[] getBytes() {
         return bos.toByteArray();
     }
 

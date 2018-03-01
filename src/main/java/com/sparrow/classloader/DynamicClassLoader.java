@@ -15,9 +15,16 @@
  * limitations under the License.
  */
 
-package com.sparrow.cg.impl;
+package com.sparrow.classloader;
 
+import com.sparrow.cg.impl.JavaClassFileObject;
+import com.sparrow.constant.EXTENSION;
 import com.sparrow.constant.magic.DIGIT;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
@@ -25,10 +32,13 @@ import java.net.URLClassLoader;
  * @author harry
  */
 public class DynamicClassLoader extends URLClassLoader {
-    DynamicClassLoader(ClassLoader classLoader) {
+    private Logger logger = LoggerFactory.getLogger(DynamicClassLoader.class);
+
+    public DynamicClassLoader(ClassLoader classLoader) {
         super(new URL[DIGIT.ZERO], classLoader);
     }
-    Class<?> loadClass(String fullName, JavaClassFileObject jco) {
+
+    public Class<?> loadClass(String fullName, JavaClassFileObject jco) {
         byte[] classData = jco.getBytes();
         return this.defineClass(fullName, classData, DIGIT.ZERO, classData.length);
     }

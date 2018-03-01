@@ -18,6 +18,7 @@
 package com.sparrow.cg.impl;
 
 import com.sparrow.cg.Unloadable;
+import com.sparrow.classloader.DynamicClassLoader;
 import com.sparrow.constant.CONFIG;
 import com.sparrow.constant.CONSTANT;
 import com.sparrow.constant.magic.SYMBOL;
