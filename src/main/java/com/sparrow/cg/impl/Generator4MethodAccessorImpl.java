@@ -19,6 +19,7 @@ package com.sparrow.cg.impl;
 
 import com.sparrow.cg.Generator4MethodAccessor;
 import com.sparrow.cg.MethodAccessor;
+import com.sparrow.cg.PropertyNamer;
 import com.sparrow.constant.CONSTANT;
 import com.sparrow.utility.ClassUtility;
 import com.sparrow.utility.StringUtility;
@@ -58,19 +59,19 @@ public class Generator4MethodAccessorImpl implements Generator4MethodAccessor {
         Method[] methods = clazz.getDeclaredMethods();
         for (Method method : methods) {
             Class<?>[] parameterType = method.getParameterTypes();
-            if (method.getName().startsWith("set") && parameterType.length == 1) {
+            if (PropertyNamer.isSetter(method.getName()) && parameterType.length == 1) {
                 setJavaSource.append(CONSTANT.ENTER_TEXT);
                 setJavaSource.append(String.format(
                     "if(methodName.equalsIgnoreCase(\"%1$s\")||methodName.equalsIgnoreCase(\"%2$s\")){",
-                    method.getName().toLowerCase(),
-                    StringUtility.getFieldBySetMethod(method.getName()).toLowerCase()));
+                    method.getName(),
+                    PropertyNamer.methodToProperty(method.getName())));
 
                 setJavaSource.append(String.format("%1$s.%2$s((%3$s)arg);}",
                     operatorObjectName, method.getName(),
                     ClassUtility.getWrapClass(parameterType[0])));
                 setJavaSource.append(CONSTANT.ENTER_TEXT);
 
-            } else if (method.getName().startsWith("get")
+            } else if (PropertyNamer.isGetter(method.getName())
                 && parameterType.length == 0
                 && !method.getReturnType().equals(void.class)) {
                 getJavaSource.append(CONSTANT.ENTER_TEXT);

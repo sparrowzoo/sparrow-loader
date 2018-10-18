@@ -18,13 +18,10 @@
 package com.sparrow.classloader;
 
 import com.sparrow.cg.impl.JavaClassFileObject;
-import com.sparrow.constant.EXTENSION;
 import com.sparrow.constant.magic.DIGIT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.net.URLClassLoader;
 
