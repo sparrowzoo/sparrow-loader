@@ -18,7 +18,7 @@
 package com.sparrow.classloader;
 
 import com.sparrow.cg.impl.JavaClassFileObject;
-import com.sparrow.constant.magic.DIGIT;
+import com.sparrow.protocol.constant.magic.DIGIT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

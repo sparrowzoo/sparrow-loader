@@ -20,7 +20,7 @@ package com.sparrow.cg.impl;
 import com.sparrow.cg.Generator4MethodAccessor;
 import com.sparrow.cg.MethodAccessor;
 import com.sparrow.cg.PropertyNamer;
-import com.sparrow.constant.CONSTANT;
+import com.sparrow.protocol.constant.CONSTANT;
 import com.sparrow.utility.ClassUtility;
 import com.sparrow.utility.StringUtility;
 import org.slf4j.Logger;
