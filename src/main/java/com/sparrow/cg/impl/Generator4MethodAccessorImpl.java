@@ -76,7 +76,7 @@ public class Generator4MethodAccessorImpl implements Generator4MethodAccessor {
                 && !method.getReturnType().equals(void.class)) {
                 getJavaSource.append(CONSTANT.ENTER_TEXT);
                 getJavaSource.append(String.format(
-                    "if(methodName.equalsIgnoreCase(\"%1$s\")||methodName.equalsIgnoreCase(\"%2$s\")){", method.getName().toLowerCase(), StringUtility.getFieldByGetMethod(method.getName()).toLowerCase()));
+                    "if(methodName.equalsIgnoreCase(\"%1$s\")||methodName.equalsIgnoreCase(\"%2$s\")){", method.getName().toLowerCase(), PropertyNamer.methodToProperty(method.getName()).toLowerCase()));
                 getJavaSource.append(String.format("return %1$s.%2$s();}",
                     operatorObjectName, method.getName()));
                 getJavaSource.append(CONSTANT.ENTER_TEXT);
