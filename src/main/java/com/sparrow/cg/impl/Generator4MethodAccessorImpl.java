@@ -56,8 +56,11 @@ public class Generator4MethodAccessorImpl implements Generator4MethodAccessor {
         setJavaSource.append(String.format("%1$s %2$s=(%1$s)o;",
             operatorClassName, operatorObjectName));
 
-        Method[] methods = clazz.getDeclaredMethods();
+        Method[] methods = clazz.getMethods();
         for (Method method : methods) {
+            if(method.getDeclaringClass().equals(Object.class)){
+                continue;
+            }
             Class<?>[] parameterType = method.getParameterTypes();
             if (PropertyNamer.isSetter(method.getName()) && parameterType.length == 1) {
                 setJavaSource.append(CONSTANT.ENTER_TEXT);
